@@ -1,4 +1,4 @@
 package main
 
-const Name string = "aws-browse"
+const Name string = "awsb"
 const Version string = "0.0.1"
