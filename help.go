@@ -1,10 +1,7 @@
 package main
 
-const AppHelp = `NAME:
-   {{.Name}} - {{.Usage}}
-
-USAGE:
-   {{.Name}} [options] [arguments...]
+const AppHelp = `USAGE:
+   {{.Name}} [options] <service> <region>
 
 VERSION:
    {{.Version}}{{if or .Author .Email}}
