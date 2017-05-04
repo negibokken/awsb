@@ -6,12 +6,12 @@ This tool offers you to easy access to Amazon Web Services console.
 
 * Move to aws console of specified service
     ```sh
-    awsb <service> <region>
+    $ awsb <service> <region>
     ```
 
 * Show list of services
     ```sh
-    awsb --service-list
+    $ awsb --service-list
 
     s3
     lambda
@@ -22,7 +22,7 @@ This tool offers you to easy access to Amazon Web Services console.
 
 * Show list of regions
     ```sh
-    awsb --region-list
+    $ awsb --region-list
 
     us-east-1:  N. Virginia
     us-east-2:  Ohio
