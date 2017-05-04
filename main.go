@@ -31,15 +31,14 @@ func main() {
 	sort.Sort(cli.FlagsByName(app.Flags))
 
 	app.Action = func(ctx *cli.Context) {
-		if ctx.IsSet("") {
-			fmt.Println("aaaa")
-		} else if ctx.IsSet("service-list") {
+		if ctx.IsSet("service-list") {
 			fmt.Println("service-list")
 			os.Exit(0)
 		} else if ctx.IsSet("region-list") {
 			fmt.Println("region-list")
 			os.Exit(0)
 		}
+
 		if ctx.NArg() < 2 {
 			cli.ShowAppHelp(ctx)
 			os.Exit(0)
