@@ -8,7 +8,7 @@ This tool offers you to easy access to Amazon Web Services console.
     ```sh
     $ awsb <service> <region>
     ```
-* Or specify `--service` or `--region`
+* Or specify `--service` and `--region`
     ```sh
     $ awsb --service <service> --region <region>
     ```
