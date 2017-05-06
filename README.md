@@ -2,6 +2,10 @@
 
 This tool offers you to easy access to Amazon Web Services console.
 
+## Demo
+
+![demo](./demo/awsb.gif)
+
 ## Usage
 
 * Move to aws console of specified service
