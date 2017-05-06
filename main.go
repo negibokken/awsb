@@ -30,12 +30,12 @@ func main() {
 			Usage: "show region list",
 		},
 		cli.StringFlag{
-			Name:  "region",
+			Name:  "region, r",
 			Value: "s3",
 			Usage: "specify region to move (default: s3)",
 		},
 		cli.StringFlag{
-			Name:  "service",
+			Name:  "service, s",
 			Value: "us-west-2",
 			Usage: "specify service to move (default: us-west-2)",
 		},
