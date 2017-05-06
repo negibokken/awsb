@@ -29,39 +29,63 @@ func main() {
 			Name:  "region-list, R",
 			Usage: "show region list",
 		},
+		cli.StringFlag{
+			Name:  "region",
+			Value: "s3",
+			Usage: "specify region to move (default: s3)",
+		},
+		cli.StringFlag{
+			Name:  "service",
+			Value: "us-west-2",
+			Usage: "specify service to move (default: us-west-2)",
+		},
 	}
 	sort.Sort(cli.FlagsByName(app.Flags))
 
-	app.Action = func(ctx *cli.Context) {
-		if ctx.IsSet("service-list") {
-			fmt.Println("service-list")
-			os.Exit(0)
-		} else if ctx.IsSet("region-list") {
-			fmt.Println("region-list")
-			os.Exit(0)
-		}
-
-		if ctx.NArg() < 2 {
-			cli.ShowAppHelp(ctx)
-			os.Exit(0)
-		}
-
-		service := ctx.Args().Get(0)
-		region := ctx.Args().Get(1)
-		url := fmt.Sprintf("https://console.aws.amazon.com/%s/home?region=%s#/home", service, region)
-
-		switch runtime.GOOS {
-		case "linux":
-			exec.Command("xdg-open", url).Start()
-		case "windows":
-			exec.Command("rundll32", "url.dll,FileProtocolHandler", url).Start()
-		case "darwin":
-			exec.Command("open", url).Start()
-		default:
-			fmt.Println("Your PC is not supported.")
-		}
-	}
+	app.Action = action
 
 	app.Run(os.Args)
 
+}
+
+func browse(url string) {
+	switch runtime.GOOS {
+	case "linux":
+		exec.Command("xdg-open", url).Start()
+	case "windows":
+		exec.Command("rundll32", "url.dll,FileProtocolHandler", url).Start()
+	case "darwin":
+		exec.Command("open", url).Start()
+	default:
+		fmt.Println("Your PC is not supported.")
+	}
+}
+
+func action(ctx *cli.Context) {
+	if ctx.IsSet("service-list") {
+		fmt.Println(Service)
+		os.Exit(0)
+	} else if ctx.IsSet("region-list") {
+		fmt.Println(Region)
+		os.Exit(0)
+	}
+
+	if ctx.IsSet("region") || ctx.IsSet("service") {
+		service := ctx.String("service")
+		region := ctx.String("region")
+		url := fmt.Sprintf("https://console.aws.amazon.com/%s/home?region=%s#/home", service, region)
+		browse(url)
+		os.Exit(0)
+	}
+
+	if ctx.NArg() < 2 {
+		cli.ShowAppHelp(ctx)
+		os.Exit(0)
+	}
+
+	service := ctx.Args().Get(0)
+	region := ctx.Args().Get(1)
+	url := fmt.Sprintf("https://console.aws.amazon.com/%s/home?region=%s#/home", service, region)
+	browse(url)
+	os.Exit(0)
 }
