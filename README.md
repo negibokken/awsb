@@ -8,6 +8,10 @@ This tool offers you to easy access to Amazon Web Services console.
     ```sh
     $ awsb <service> <region>
     ```
+* Or specify `--service` or `--region`
+    ```sh
+    $ awsb --service <service> --region <region>
+    ```
 
 * Show list of services
     ```sh
@@ -33,10 +37,12 @@ This tool offers you to easy access to Amazon Web Services console.
 
 ## Options
 
-| Option               | explanation      |
-|:--------------------:|:----------------:|
-| --service-list (-S)  | list of services |
-| --region-list  (-R)  | list of regions  |
+| Option               | explanation        |
+|:--------------------:|:------------------:|
+| --service            | to specify service |
+| --region             | to specify region  |
+| --service-list (-S)  | list of services   |
+| --region-list  (-R)  | list of regions    |
 
 ## Install
 
