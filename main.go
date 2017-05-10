@@ -70,21 +70,25 @@ func action(ctx *cli.Context) {
 		os.Exit(0)
 	}
 
+	var service string
+	var region string
 	if ctx.IsSet("region") || ctx.IsSet("service") {
-		service := ctx.String("service")
-		region := ctx.String("region")
+		service = ctx.String("service")
+		region = ctx.String("region")
 		url := fmt.Sprintf("https://console.aws.amazon.com/%s/home?region=%s#/home", service, region)
 		browse(url)
 		os.Exit(0)
 	}
 
-	if ctx.NArg() < 2 {
+	if ctx.NArg() < 1 {
 		cli.ShowAppHelp(ctx)
 		os.Exit(0)
 	}
 
-	service := ctx.Args().Get(0)
-	region := ctx.Args().Get(1)
+	service = ctx.Args().Get(0)
+	if ctx.Args().Get(1) == "" {
+		region = "us-west-2"
+	}
 	url := fmt.Sprintf("https://console.aws.amazon.com/%s/home?region=%s#/home", service, region)
 	browse(url)
 	os.Exit(0)
