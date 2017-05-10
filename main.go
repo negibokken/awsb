@@ -62,6 +62,9 @@ func browse(url string) {
 }
 
 func action(ctx *cli.Context) {
+	var service string
+	var region string
+
 	if ctx.IsSet("service-list") {
 		fmt.Println(Service)
 		os.Exit(0)
@@ -70,8 +73,6 @@ func action(ctx *cli.Context) {
 		os.Exit(0)
 	}
 
-	var service string
-	var region string
 	if ctx.IsSet("region") || ctx.IsSet("service") {
 		service = ctx.String("service")
 		region = ctx.String("region")
@@ -89,6 +90,7 @@ func action(ctx *cli.Context) {
 	if ctx.Args().Get(1) == "" {
 		region = "us-west-2"
 	}
+
 	url := fmt.Sprintf("https://console.aws.amazon.com/%s/home?region=%s#/home", service, region)
 	browse(url)
 	os.Exit(0)
