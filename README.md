@@ -10,7 +10,7 @@ This tool offers you to easy access to Amazon Web Services console.
 
 * Move to aws console of specified service
     ```sh
-    $ awsb <service> <region>
+    $ awsb <service> [region (default: us-west-2)]
     ```
 * Or specify `--service` and `--region`
     ```sh
