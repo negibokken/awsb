@@ -43,8 +43,8 @@ This tool offers you to easy access to Amazon Web Services console.
 
 | Option               | explanation        |
 |:--------------------:|:------------------:|
-| --service            | to specify service |
-| --region             | to specify region  |
+| --service            | to specify service (default: s3) |
+| --region             | to specify region  (default: us-west-2) |
 | --service-list (-S)  | list of services   |
 | --region-list  (-R)  | list of regions    |
 
