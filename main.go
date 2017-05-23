@@ -89,8 +89,9 @@ func action(ctx *cli.Context) {
 	service = ctx.Args().Get(0)
 	if ctx.Args().Get(1) == "" {
 		region = "us-west-2"
+	} else {
+		region = ctx.Args().Get(1)
 	}
-	region = ctx.Args().Get(1)
 
 	url := fmt.Sprintf("https://console.aws.amazon.com/%s/home?region=%s", service, region)
 	browse(url)
