@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.0.3 (2017/05/23)
+
+* Bug fix
+
 ## 0.0.2 (2017/05/11)
 
 * Change to not move #home
